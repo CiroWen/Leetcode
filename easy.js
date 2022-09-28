@@ -39,7 +39,7 @@ var containsDuplicate = function (nums) {
  * Space complexity: O(1)
  */
 var twoSum = function (nums, target) {
-  const tempArr = [];  // array for solution
+  const tempArr = []; // array for solution
   for (let i = 0; i < nums.length; i++) {
     const exclNums = nums.slice(i + 1, nums.length + 1);
     // an array that excludes currernt element
@@ -48,7 +48,7 @@ var twoSum = function (nums, target) {
     if (!exclNums.includes(diff)) continue; //continue if difference can't be found
     // case [3,3], we find index excluding current element
     if (i === nums.indexOf(diff)) {
-      tempArr.push(i, nums.indexOf(diff, i+1));
+      tempArr.push(i, nums.indexOf(diff, i + 1));
     } else {
       tempArr.push(i, nums.indexOf(diff));
     }
@@ -61,3 +61,30 @@ var twoSum = function (nums, target) {
 // console.log(twoSum([3, 2, 4], 6)); //passed
 // console.log(twoSum([3, 2, 3], 6));
 // console.log(twoSum([2,5,5,11,],10));
+
+// 3. Remove Duplicates
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+//finds the element that is different from the previous one, then starting
+var removeDuplicates = function (nums) {
+  let count = 1 //counter and tracker
+  for (let i = 0; i < nums.length - 1; i++) {
+    //if the current element is different from the next one, we set the array at [count] the value of next element.
+    // in the meanwhile, imcrement it.
+    if (nums[i] !== nums[i+1]){
+      nums[count++] = nums[i+1]
+    }
+  
+    console.log(nums);
+    // i--
+    // nums.push('_')
+
+  }
+  console.log(nums);
+  return count
+};
+
+// console.log(removeDuplicates([1, 1, 3, 3, 4, 5])); //passed
+// console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4])); //passed
