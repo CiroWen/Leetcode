@@ -31,26 +31,33 @@ var containsDuplicate = function (nums) {
 
 // 2. Two Sum
 /**
+ * // if there is a differece between target and any element in the given array. then there is solutions and we can find out their index.
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
+ * Time complexity: O(N)
+ * Space complexity: O(1)
  */
 var twoSum = function (nums, target) {
-
-  const tempArr = []
+  const tempArr = [];  // array for solution
   for (let i = 0; i < nums.length; i++) {
-    if(nums.includes(Math.abs(target - nums[i])) &&Math.abs(target - nums[i])!== nums[i]){
-      console.log(nums.indexOf(target- nums[i]));
-
-      
-      tempArr.push(i,nums.indexOf(Math.abs(target - nums[i])))
-      break;
+    const exclNums = nums.slice(i + 1, nums.length + 1);
+    // an array that excludes currernt element
+    const diff = target - nums[i]; //differnece between target and current element
+    // const exclNums = num
+    if (!exclNums.includes(diff)) continue; //continue if difference can't be found
+    // case [3,3], we find index excluding current element
+    if (i === nums.indexOf(diff)) {
+      tempArr.push(i, nums.indexOf(diff, i+1));
+    } else {
+      tempArr.push(i, nums.indexOf(diff));
     }
-
+    return tempArr;
   }
-  console.log(tempArr);
 };
-
-// twoSum([2,7,11,15], 9) //passed
-// twoSum([3,2,4],6) // passed
-twoSum([3,3],6)
+// console.log(twoSum([2,7,11,15], 9)) //passed);
+// console.log(twoSum([3, 3], 6)); //passed
+// console.log(twoSum([2, 7, 11, 15], 9));//passed
+// console.log(twoSum([3, 2, 4], 6)); //passed
+// console.log(twoSum([3, 2, 3], 6));
+// console.log(twoSum([2,5,5,11,],10));
