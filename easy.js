@@ -158,6 +158,23 @@ var intersect = function (nums1, nums2) {
   return temp
 };
 
-console.log(intersect([3, 1, 2], [1, 1]));
-console.log(intersect([1, 2, 2, 1], [2]));
-console.log(intersect([4,9,5],[9,4,9,8,4]));
+// console.log(intersect([3, 1, 2], [1, 1]));
+// console.log(intersect([1, 2, 2, 1], [2]));
+// console.log(intersect([4,9,5],[9,4,9,8,4]));
+
+// 7. Plus One
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+ var plusOne = function(digits) {
+  let temp =   (BigInt(digits.join('')) + 1n).toString().split('').map(Number)
+  console.log(typeof temp);
+  
+  // return (String(Number(digits.join(''))+1).split('').map(Number));
+
+  return temp;
+};
+
+console.log(plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]));
+console.log('Number.MAX_SAFE_INTEGER',Number.MAX_SAFE_INTEGER);
