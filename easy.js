@@ -115,7 +115,7 @@ var singleNumber = function (nums) {
  * @param {number[]} nums1
  * @param {number[]} nums2
  * @return {number[]}
- * 
+ *
  * thought: use the shorter array to be the constraint for the loop. then compares to see if the longer array includes each element in the shorter array
  */
 
@@ -138,3 +138,26 @@ var intersection = function (nums1, nums2) {
 };
 
 // console.log(intersection([4, 9, 5], [9, 4, 9, 8, 4]));
+
+// 6. Intersection of Two Arrays II
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ * found and remove from the origin array, so no duplicate check
+ */
+var intersect = function (nums1, nums2) {
+  let temp = [];
+  nums2.forEach((ele, idx) => {
+    let interEle = nums1.indexOf(ele);
+    if (interEle > -1) {//intersect found
+      temp.push(ele)
+      nums1.splice(interEle,1) //found and delete, the common element, so one element would not be checked twice or more
+    }
+  });
+  return temp
+};
+
+console.log(intersect([3, 1, 2], [1, 1]));
+console.log(intersect([1, 2, 2, 1], [2]));
+console.log(intersect([4,9,5],[9,4,9,8,4]));
