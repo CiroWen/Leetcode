@@ -1,5 +1,5 @@
 
-// 4. Rotate Array
+// 1. Rotate Array
 /**
  * @param {number[]} nums
  * @param {number} k

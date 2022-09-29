@@ -88,52 +88,20 @@ var removeDuplicates = function (nums) {
 // console.log(removeDuplicates([1, 1, 3, 3, 4, 5])); //passed
 // console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4])); //passed
 
-// 4. Rotate Array
+// 4. Single Number
 /**
  * @param {number[]} nums
- * @param {number} k
- * @return {void} Do not return anything, modify nums in-place instead.
+ * @return {number}
+ * 
  */
-//
-var rotate = function (nums, k) {
-  if (k === nums.length) return;
-  k = k % nums.length;
-
-  reverse(0, nums.length - 1); //reverse the whole array
-  reverse(0, k - 1); //reverse the first half of the array
-  reverse(k, nums.length - 1); //reverse the rest half of the array
-  function reverse(start, end) {
-    while (start < end) {
-      let temp = nums[start];
-      nums[start] = nums[end];
-      nums[end] = temp;
-      start++;
-      end--;
+ var singleNumber = function(nums) {
+  for(let i = 0; i<nums.length; i++){
+    if(!((nums.slice(0,i).concat(nums.slice(i+1))).includes(nums[i]))){
+        return nums[i]
     }
   }
-  console.log(nums);
+
+    
 };
 
-rotate([1, 2, 3, 4, 5, 6], 1);
-
-/**
- * passes maximum time limit
- */
-// var rotate = function (nums, k) {
-// if(k === nums.length) return
-// if(k > nums.length) k = k % nums.length
-//    while(k>0){
-//     // nums.shift(nums.push()) rotate to the left
-//     nums.unshift(nums.pop()) // rotate to the right
-//     k--
-//    }
-//   console.log(nums);
-// };
-
-// rotate([1, 2, 3, 4, 5, 6], 5);
-
-/**
- * helperArr = [1,2,3,4]
- * nums = [1,2,3,4]
- * i = 0 nums = [4,1,]
- *  */
+console.log(singleNumber([1,2,2,2,3,4,3,1,5,5,10,10]));
