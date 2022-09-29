@@ -92,16 +92,49 @@ var removeDuplicates = function (nums) {
 /**
  * @param {number[]} nums
  * @return {number}
- * 
+ *
+ * thought: create a dynamic array excluding the current element, and if such array doesn't include the current element itself, then this element is the Single Number.
  */
- var singleNumber = function(nums) {
-  for(let i = 0; i<nums.length; i++){
-    if(!((nums.slice(0,i).concat(nums.slice(i+1))).includes(nums[i]))){
-        return nums[i]
+var singleNumber = function (nums) {
+  for (let i = 0; i < nums.length; i++) {
+    if (
+      !nums
+        .slice(0, i)
+        .concat(nums.slice(i + 1))
+        .includes(nums[i])
+    ) {
+      return nums[i];
     }
   }
-
-    
 };
 
-console.log(singleNumber([1,2,2,2,3,4,3,1,5,5,10,10]));
+// console.log(singleNumber([1,2,2,2,3,4,3,1,5,5,10,10]));
+
+// 5. Intersection of Two Arrays
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ * 
+ * thought: use the shorter array to be the constraint for the loop. then compares to see if the longer array includes each element in the shorter array
+ */
+
+var intersection = function (nums1, nums2) {
+  const temp = [];
+  if (nums1.length <= nums2.length) {
+    for (let i = 0; i < nums1.length; i++) {
+      if (nums2.includes(nums1[i]) && !temp.includes(nums1[i])) {
+        temp.push(nums1[i]);
+      }
+    }
+  } else {
+    for (let i = 0; i < nums2.length; i++) {
+      console.log(2);
+      if (nums1.includes(nums2[i]) && !temp.includes(nums2[i]))
+        temp.push(nums2[i]);
+    }
+  }
+  return temp;
+};
+
+// console.log(intersection([4, 9, 5], [9, 4, 9, 8, 4]));
