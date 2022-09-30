@@ -209,14 +209,15 @@ var reverseString = function (s) {
   let start = 0;
   let end = s.length - 1;
   while (start < end) {
-    let temp = s[start]
-    s[start] = s[end]
-    s[end] = temp
-    end--
-    start++
+    let temp = s[start];
+    s[start] = s[end];
+    s[end] = temp;
+    end--;
+    start++;
   }
-  console.log(s);
 };
 
-reverseString(["h", "e", "l", "l", "o"]);
-reverseString(["h", "e", "l", "o"]);
+// reverseString(["h", "e", "l", "l", "o"]);
+// reverseString(["h", "e", "l", "o"]);
+
+

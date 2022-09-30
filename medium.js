@@ -75,3 +75,28 @@ rotate([
 // [7, 4, 1] //expected result
 // [8, 5, 2]
 // [9, 6, 3];
+
+// 3. Reverse Integer
+/**
+ * @param {number} x
+ * @return {number}
+ */
+ var reverse = function (x) {
+    // const isNeg = Math.sign(x);
+    // console.log(isNeg);
+  
+    if (Math.sign(x) === 1) {
+      const result = parseInt(
+        x.toString().split("").map(Number).reverse().join("")
+      );
+      return result >= Math.pow(2, 31) ? 0 : result;
+    } else {
+      const result =
+        0 - parseInt(x.toString().split("").map(Number).reverse().join(""));
+      return result <= Math.pow(-2, 31) ? 0 : result;
+    }
+  };
+  
+//   console.log(reverse(123));
+//   console.log(reverse(-123));
+//   console.log(reverse(1534236469));
