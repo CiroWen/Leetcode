@@ -62,7 +62,7 @@ var twoSum = function (nums, target) {
 // console.log(twoSum([3, 2, 3], 6));
 // console.log(twoSum([2,5,5,11,],10));
 
-// 3. Remove Duplicates
+// 3. Remove Duplicates from Sorted Array
 /**
  * @param {number[]} nums
  * @return {number}
@@ -70,6 +70,8 @@ var twoSum = function (nums, target) {
 //finds the element that is different from the previous one, then starting
 var removeDuplicates = function (nums) {
   let count = 1; //counter and tracker
+  // debugger;//
+
   for (let i = 0; i < nums.length - 1; i++) {
     //if the current element is different from the next one, we set the array at [count] the value of next element.
     // in the meanwhile, imcrement it.
@@ -84,7 +86,6 @@ var removeDuplicates = function (nums) {
   console.log(nums);
   return count;
 };
-
 // console.log(removeDuplicates([1, 1, 3, 3, 4, 5])); //passed
 // console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4])); //passed
 
@@ -150,12 +151,13 @@ var intersect = function (nums1, nums2) {
   let temp = [];
   nums2.forEach((ele, idx) => {
     let interEle = nums1.indexOf(ele);
-    if (interEle > -1) {//intersect found
-      temp.push(ele)
-      nums1.splice(interEle,1) //found and delete, the common element, so one element would not be checked twice or more
+    if (interEle > -1) {
+      //intersect found
+      temp.push(ele);
+      nums1.splice(interEle, 1); //found and delete, the common element, so one element would not be checked twice or more
     }
   });
-  return temp
+  return temp;
 };
 
 // console.log(intersect([3, 1, 2], [1, 1]));
@@ -167,14 +169,34 @@ var intersect = function (nums1, nums2) {
  * @param {number[]} digits
  * @return {number[]}
  */
- var plusOne = function(digits) {
-  let temp =   (BigInt(digits.join('')) + 1n).toString().split('').map(Number)
-  console.log(typeof temp);
-  
+var plusOne = function (digits) {
+  let temp = (BigInt(digits.join("")) + 1n).toString().split("").map(Number);
+
   // return (String(Number(digits.join(''))+1).split('').map(Number));
 
   return temp;
 };
 
-console.log(plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]));
-console.log('Number.MAX_SAFE_INTEGER',Number.MAX_SAFE_INTEGER);
+// console.log(plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]));
+// console.log('Number.MAX_SAFE_INTEGER',Number.MAX_SAFE_INTEGER);
+
+// 8. Moves Zeros
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ *
+ * thought: count all the zeros in the array, and removes them. fill them to the end of the array at the end  X not changing original array
+ * 2nd thought: just do it normally, think normally. we see a 0 we take it away and push  it to the back of the array
+ */
+var moveZeroes = function (nums) {
+  for (let i = 0; i < nums.length; i++) {
+    if(nums[i] === 0){
+    nums.push(nums.splice(nums.indexOf(0), 1)[0]); //removes current 0
+    }
+  }
+  console.log(nums);
+};
+
+// moveZeroes([0, 1, 2, 3, 3, 0, 22]); //passed
+moveZeroes([0,1,0,3,12]); //passed
+
