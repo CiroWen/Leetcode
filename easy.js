@@ -190,13 +190,33 @@ var plusOne = function (digits) {
  */
 var moveZeroes = function (nums) {
   for (let i = 0; i < nums.length; i++) {
-    if(nums[i] === 0){
-    nums.push(nums.splice(nums.indexOf(0), 1)[0]); //removes current 0
+    if (nums[i] === 0) {
+      nums.push(nums.splice(nums.indexOf(0), 1)[0]); //removes current 0
     }
   }
   console.log(nums);
 };
 
 // moveZeroes([0, 1, 2, 3, 3, 0, 22]); //passed
-moveZeroes([0,1,0,3,12]); //passed
+// moveZeroes([0,1,0,3,12]); //passed
 
+// 9. Reverse String
+/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function (s) {
+  let start = 0;
+  let end = s.length - 1;
+  while (start < end) {
+    let temp = s[start]
+    s[start] = s[end]
+    s[end] = temp
+    end--
+    start++
+  }
+  console.log(s);
+};
+
+reverseString(["h", "e", "l", "l", "o"]);
+reverseString(["h", "e", "l", "o"]);
